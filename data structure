@@ -1,0 +1,49 @@
+import numpy as np
+
+# 1.a.i - 1st Matrix (from initials and second letters)
+matrix1 = np.array([[13, 2, 14],    # M, B, N
+                    [1, 5, 1]])     # A, E, A
+
+# 1.a.ii - 2nd Matrix (from student number)
+matrix2 = np.array([[2, 0, 2],      # First 3 digits
+                    [3, 1, 0]])     # Last 3 digits
+
+# 1.b - Print both matrices
+print("1st Matrix:\n", matrix1)
+print("2nd Matrix:\n", matrix2)
+
+# 2.a - Matrix Addition
+matrix3 = matrix1 + matrix2
+
+# 2.b - Print 3rd Matrix
+print("3rd Matrix (Sum):\n", matrix3)
+
+# 3.a - Scalar Multiplication (multiply matrix1 by 2)
+matrix4 = matrix1 * 2
+
+# 3.b - Print 4th Matrix
+print("4th Matrix (Matrix1 * 2):\n", matrix4)
+
+# 4.a - Transpose of 2nd Matrix
+matrix5 = matrix2.T
+
+# 4.b - Print 5th Matrix
+print("5th Matrix (Transpose of Matrix2):\n", matrix5)
+
+# 5.a - Matrix Multiplication: Matrix3 (2x3) x Matrix5 (3x2) = Matrix6 (2x2)
+matrix6 = np.dot(matrix3, matrix5)
+
+# 5.b - Print 6th Matrix
+print("6th Matrix (Matrix3 x Matrix5):\n", matrix6)
+
+# 6.a - Sum of all elements in 3rd matrix
+sum_matrix3 = np.sum(matrix3)
+
+# 6.b - Print the sum
+print("Sum of all elements in 3rd Matrix:", sum_matrix3)
+
+# 7.a - Create a 2x3 zero matrix
+matrix7 = np.zeros((2, 3), dtype=int)
+
+# 7.b - Print 7th Matrix
+print("7th Matrix (Zero Matrix):\n", matrix7)
