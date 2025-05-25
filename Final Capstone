@@ -3,22 +3,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Simulate a cleaned Pokémon dataset (Gen 1–3) with 100+ entries
+# Pokémon dataset (Gen 1–3) with 350 entries
 np.random.seed(42)
 types = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Normal', 'Fighting', 'Rock']
+
 df = pd.DataFrame({
-    'Name': [f'Pokemon{i}' for i in range(1, 151)],
-    'Type 1': np.random.choice(types, 150),
-    'HP': np.random.randint(30, 160, size=150),
-    'Attack': np.random.randint(20, 160, size=150),
-    'Defense': np.random.randint(20, 160, size=150),
-    'Speed': np.random.randint(30, 160, size=150),
-    'Legendary': np.random.choice([True, False], size=150, p=[0.1, 0.9]),
-    'Generation': np.random.choice([1, 2, 3], 150)
+    'Name': [f'Pokemon{i}' for i in range(1, 351)],  # Now 350 entries
+    'Type 1': np.random.choice(types, 350),
+    'HP': np.random.randint(30, 160, size=350),
+    'Attack': np.random.randint(20, 160, size=350),
+    'Defense': np.random.randint(20, 160, size=350),
+    'Speed': np.random.randint(30, 160, size=350),
+    'Legendary': np.random.choice([True, False], size=350, p=[0.1, 0.9]),
+    'Generation': np.random.choice([1, 2, 3], 350)
 })
 df['Total'] = df[['HP', 'Attack', 'Defense', 'Speed']].sum(axis=1)
 
-# Create the histogram of Speed
+# Histogram of Speed
 plt.figure(figsize=(10, 6))
 sns.histplot(df['Speed'], bins=20, kde=True)
 plt.title('Speed Distribution')
@@ -28,7 +29,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# Create the boxplot of Attack by Primary Type
+# Boxplot of Attack by Primary Type
 plt.figure(figsize=(12, 6))
 sns.boxplot(x='Type 1', y='Attack', data=df)
 plt.title('Attack Stats by Primary Type')
@@ -39,12 +40,22 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# Create correlation plot between Attack and Defense
+# Correlation plot between Attack and Defense
 plt.figure(figsize=(10, 6))
 sns.regplot(x='Attack', y='Defense', data=df, scatter_kws={'alpha': 0.5}, line_kws={'color': 'red'})
 plt.title('Correlation between Attack and Defense')
 plt.xlabel('Attack')
 plt.ylabel('Defense')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Scatterplot with regression line: HP vs Speed
+plt.figure(figsize=(10, 6))
+sns.regplot(x='HP', y='Speed', data=df, scatter_kws={'alpha':0.5}, line_kws={'color':'blue'})
+plt.title('Correlation between HP and Speed')
+plt.xlabel('HP')
+plt.ylabel('Speed')
 plt.grid(True)
 plt.tight_layout()
 plt.show()
