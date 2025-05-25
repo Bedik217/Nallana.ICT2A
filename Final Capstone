@@ -8,7 +8,7 @@ np.random.seed(42)
 types = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Normal', 'Fighting', 'Rock']
 
 df = pd.DataFrame({
-    'Name': [f'Pokemon{i}' for i in range(1, 351)],  # Now 350 entries
+    'Name': [f'Pokemon{i}' for i in range(1, 351)],  
     'Type 1': np.random.choice(types, 350),
     'HP': np.random.randint(30, 160, size=350),
     'Attack': np.random.randint(20, 160, size=350),
