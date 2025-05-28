@@ -3,21 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Pokémon dataset (Gen 1–3) with 350 entries
-np.random.seed(42)
-types = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Normal', 'Fighting', 'Rock']
+# Load the dataset from the GitHub raw URL
+url = 'https://raw.githubusercontent.com/Bedik217/Nallana.ICT2A/main/pokemongen3-4.csv'
+df = pd.read_csv(url)
 
-df = pd.DataFrame({
-    'Name': [f'Pokemon{i}' for i in range(1, 351)],  
-    'Type 1': np.random.choice(types, 350),
-    'HP': np.random.randint(30, 160, size=350),
-    'Attack': np.random.randint(20, 160, size=350),
-    'Defense': np.random.randint(20, 160, size=350),
-    'Speed': np.random.randint(30, 160, size=350),
-    'Legendary': np.random.choice([True, False], size=350, p=[0.1, 0.9]),
-    'Generation': np.random.choice([1, 2, 3], 350)
-})
-df['Total'] = df[['HP', 'Attack', 'Defense', 'Speed']].sum(axis=1)
+# Preview the dataset to understand its structure (optional)
+print(df.head())
+
+# If 'Total' is not in the dataset, calculate it
+if 'Total' not in df.columns:
+    df['Total'] = df[['HP', 'Attack', 'Defense', 'Speed']].sum(axis=1)
 
 # Histogram of Speed
 plt.figure(figsize=(10, 6))
